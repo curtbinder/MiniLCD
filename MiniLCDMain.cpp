@@ -42,36 +42,36 @@ wxString wxbuildinfo(wxbuildinfoformat format)
 }
 
 //(*IdInit(MiniLCDFrame)
-const long MiniLCDFrame::ID_BUTTON1 = wxNewId();
-const long MiniLCDFrame::ID_BUTTON2 = wxNewId();
-const long MiniLCDFrame::ID_BUTTON3 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX1 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX2 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX3 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX4 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX5 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX6 = wxNewId();
-const long MiniLCDFrame::ID_TEXTCTRL1 = wxNewId();
+const long MiniLCDFrame::ID_BUTTON_CLEAR_SCREEN = wxNewId();
+const long MiniLCDFrame::ID_BUTTON_NEW_LINE = wxNewId();
+const long MiniLCDFrame::ID_BUTTON_WRITE_TEXT = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_GPIO = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_SHOW_CURSOR = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_BLINK_CURSOR = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_BACKLIGHT = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_AUTO_SCROLL = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_LINE_WRAP = wxNewId();
+const long MiniLCDFrame::ID_TEXTCTRL_BACKLIGHT_MINUTES = wxNewId();
 const long MiniLCDFrame::ID_STATICTEXT1 = wxNewId();
-const long MiniLCDFrame::ID_TEXTCTRL2 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX7 = wxNewId();
+const long MiniLCDFrame::ID_TEXTCTRL_MESSAGE = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_UPDATE = wxNewId();
 const long MiniLCDFrame::ID_STATICBOX1 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX8 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX9 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER1 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER2 = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_ENABLE_HORIZONTAL = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_HORIZONTAL_REVERSE = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_HORIZONTAL_1 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_HORIZONTAL_2 = wxNewId();
 const long MiniLCDFrame::ID_STATICBOX2 = wxNewId();
-const long MiniLCDFrame::ID_CHECKBOX10 = wxNewId();
-const long MiniLCDFrame::ID_TOGGLEBUTTON1 = wxNewId();
-const long MiniLCDFrame::ID_TOGGLEBUTTON2 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER3 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER4 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER5 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER6 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER7 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER8 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER9 = wxNewId();
-const long MiniLCDFrame::ID_SLIDER10 = wxNewId();
+const long MiniLCDFrame::ID_CHECKBOX_VERTICAL_ENABLE = wxNewId();
+const long MiniLCDFrame::ID_TOGGLEBUTTON_VERTICAL_THIN = wxNewId();
+const long MiniLCDFrame::ID_TOGGLEBUTTON_VERTICAL_THICK = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_1 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_2 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_3 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_4 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_5 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_6 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_7 = wxNewId();
+const long MiniLCDFrame::ID_SLIDER_VERTICAL_8 = wxNewId();
 const long MiniLCDFrame::idMenuQuit = wxNewId();
 const long MiniLCDFrame::idMenuAbout = wxNewId();
 const long MiniLCDFrame::ID_STATUSBAR1 = wxNewId();
@@ -94,46 +94,48 @@ MiniLCDFrame::MiniLCDFrame(wxWindow* parent,wxWindowID id)
     Create(parent, wxID_ANY, _("Mini LCD App"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetClientSize(wxSize(450,400));
     SetMinSize(wxSize(450,400));
-    Button1 = new wxButton(this, ID_BUTTON1, _("Clear Screen"), wxPoint(8,8), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON1"));
-    Button2 = new wxButton(this, ID_BUTTON2, _("New Line"), wxPoint(8,48), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON2"));
-    Button3 = new wxButton(this, ID_BUTTON3, _("Write Text"), wxPoint(8,88), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON3"));
-    CheckBox1 = new wxCheckBox(this, ID_CHECKBOX1, _("GPO"), wxPoint(120,8), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX1"));
-    CheckBox1->SetValue(false);
-    CheckBox2 = new wxCheckBox(this, ID_CHECKBOX2, _("Show Cursor"), wxPoint(120,32), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX2"));
-    CheckBox2->SetValue(false);
-    CheckBox3 = new wxCheckBox(this, ID_CHECKBOX3, _("Blink Cursor"), wxPoint(120,56), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX3"));
-    CheckBox3->SetValue(false);
-    CheckBox4 = new wxCheckBox(this, ID_CHECKBOX4, _("Backlight"), wxPoint(240,8), wxSize(88,18), 0, wxDefaultValidator, _T("ID_CHECKBOX4"));
-    CheckBox4->SetValue(false);
-    CheckBox5 = new wxCheckBox(this, ID_CHECKBOX5, _("Auto Scroll"), wxPoint(240,32), wxSize(104,18), 0, wxDefaultValidator, _T("ID_CHECKBOX5"));
-    CheckBox5->SetValue(false);
-    CheckBox6 = new wxCheckBox(this, ID_CHECKBOX6, _("Line Wrap"), wxPoint(240,56), wxSize(104,18), 0, wxDefaultValidator, _T("ID_CHECKBOX6"));
-    CheckBox6->SetValue(false);
-    TextCtrl1 = new wxTextCtrl(this, ID_TEXTCTRL1, wxEmptyString, wxPoint(336,8), wxSize(32,18), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+    SetMaxSize(wxSize(450,400));
+    btnClearScreen = new wxButton(this, ID_BUTTON_CLEAR_SCREEN, _("Clear Screen"), wxPoint(8,8), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON_CLEAR_SCREEN"));
+    btnNewLine = new wxButton(this, ID_BUTTON_NEW_LINE, _("New Line"), wxPoint(8,48), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON_NEW_LINE"));
+    btnWriteText = new wxButton(this, ID_BUTTON_WRITE_TEXT, _("Write Text"), wxPoint(8,88), wxSize(104,30), 0, wxDefaultValidator, _T("ID_BUTTON_WRITE_TEXT"));
+    ckGPIO = new wxCheckBox(this, ID_CHECKBOX_GPIO, _("GPIO"), wxPoint(120,8), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_GPIO"));
+    ckGPIO->SetValue(false);
+    ckShowCursor = new wxCheckBox(this, ID_CHECKBOX_SHOW_CURSOR, _("Show Cursor"), wxPoint(120,32), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_SHOW_CURSOR"));
+    ckShowCursor->SetValue(false);
+    ckBlinkCursor = new wxCheckBox(this, ID_CHECKBOX_BLINK_CURSOR, _("Blink Cursor"), wxPoint(120,56), wxSize(112,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_BLINK_CURSOR"));
+    ckBlinkCursor->SetValue(false);
+    ckBacklight = new wxCheckBox(this, ID_CHECKBOX_BACKLIGHT, _("Backlight"), wxPoint(240,8), wxSize(88,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_BACKLIGHT"));
+    ckBacklight->SetValue(false);
+    ckAutoScroll = new wxCheckBox(this, ID_CHECKBOX_AUTO_SCROLL, _("Auto Scroll"), wxPoint(240,32), wxSize(104,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_AUTO_SCROLL"));
+    ckAutoScroll->SetValue(false);
+    ckLineWrap = new wxCheckBox(this, ID_CHECKBOX_LINE_WRAP, _("Line Wrap"), wxPoint(240,56), wxSize(104,18), 0, wxDefaultValidator, _T("ID_CHECKBOX_LINE_WRAP"));
+    ckLineWrap->SetValue(false);
+    editBacklightMinutes = new wxTextCtrl(this, ID_TEXTCTRL_BACKLIGHT_MINUTES, _("0"), wxPoint(336,8), wxSize(32,18), 0, wxDefaultValidator, _T("ID_TEXTCTRL_BACKLIGHT_MINUTES"));
+    editBacklightMinutes->SetMaxLength(3);
     StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("minutes"), wxPoint(376,8), wxDefaultSize, 0, _T("ID_STATICTEXT1"));
-    TextCtrl2 = new wxTextCtrl(this, ID_TEXTCTRL2, _("Text"), wxPoint(120,88), wxSize(240,30), 0, wxDefaultValidator, _T("ID_TEXTCTRL2"));
-    CheckBox7 = new wxCheckBox(this, ID_CHECKBOX7, _("Update"), wxPoint(368,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX7"));
-    CheckBox7->SetValue(false);
+    editMessage = new wxTextCtrl(this, ID_TEXTCTRL_MESSAGE, _("Text"), wxPoint(120,88), wxSize(240,30), 0, wxDefaultValidator, _T("ID_TEXTCTRL_MESSAGE"));
+    ckUpdate = new wxCheckBox(this, ID_CHECKBOX_UPDATE, _("Update"), wxPoint(368,96), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX_UPDATE"));
+    ckUpdate->SetValue(false);
     StaticBox1 = new wxStaticBox(this, ID_STATICBOX1, _("Horizontal Bar Graph"), wxPoint(8,128), wxSize(432,104), 0, _T("ID_STATICBOX1"));
-    CheckBox8 = new wxCheckBox(this, ID_CHECKBOX8, _("Enable"), wxPoint(16,152), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX8"));
-    CheckBox8->SetValue(false);
-    CheckBox9 = new wxCheckBox(this, ID_CHECKBOX9, _("Reverse"), wxPoint(96,152), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX9"));
-    CheckBox9->SetValue(false);
-    Slider1 = new wxSlider(this, ID_SLIDER1, 0, 0, 100, wxPoint(16,176), wxSize(416,24), 0, wxDefaultValidator, _T("ID_SLIDER1"));
-    Slider2 = new wxSlider(this, ID_SLIDER2, 0, 0, 100, wxPoint(16,200), wxSize(416,24), 0, wxDefaultValidator, _T("ID_SLIDER2"));
+    ckHorizontalEnable = new wxCheckBox(this, ID_CHECKBOX_ENABLE_HORIZONTAL, _("Enable"), wxPoint(16,152), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX_ENABLE_HORIZONTAL"));
+    ckHorizontalEnable->SetValue(false);
+    ckHorizontalReverse = new wxCheckBox(this, ID_CHECKBOX_HORIZONTAL_REVERSE, _("Reverse"), wxPoint(96,152), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX_HORIZONTAL_REVERSE"));
+    ckHorizontalReverse->SetValue(false);
+    slideHorizontal1 = new wxSlider(this, ID_SLIDER_HORIZONTAL_1, 0, 0, 100, wxPoint(16,176), wxSize(416,24), 0, wxDefaultValidator, _T("ID_SLIDER_HORIZONTAL_1"));
+    slideHorizontal2 = new wxSlider(this, ID_SLIDER_HORIZONTAL_2, 0, 0, 100, wxPoint(16,200), wxSize(416,24), 0, wxDefaultValidator, _T("ID_SLIDER_HORIZONTAL_2"));
     StaticBox2 = new wxStaticBox(this, ID_STATICBOX2, _("Vertical Bar Graph"), wxPoint(8,240), wxSize(432,104), 0, _T("ID_STATICBOX2"));
-    CheckBox10 = new wxCheckBox(this, ID_CHECKBOX10, _("Enable"), wxPoint(16,264), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX10"));
-    CheckBox10->SetValue(false);
-    ToggleButton1 = new wxToggleButton(this, ID_TOGGLEBUTTON1, _("Thin"), wxPoint(16,288), wxDefaultSize, 0, wxDefaultValidator, _T("ID_TOGGLEBUTTON1"));
-    ToggleButton2 = new wxToggleButton(this, ID_TOGGLEBUTTON2, _("Thick"), wxPoint(16,312), wxDefaultSize, 0, wxDefaultValidator, _T("ID_TOGGLEBUTTON2"));
-    Slider3 = new wxSlider(this, ID_SLIDER3, 0, 0, 100, wxPoint(112,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER3"));
-    Slider4 = new wxSlider(this, ID_SLIDER4, 0, 0, 100, wxPoint(144,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER4"));
-    Slider5 = new wxSlider(this, ID_SLIDER5, 0, 0, 100, wxPoint(176,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER5"));
-    Slider6 = new wxSlider(this, ID_SLIDER6, 0, 0, 100, wxPoint(208,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER6"));
-    Slider7 = new wxSlider(this, ID_SLIDER7, 0, 0, 100, wxPoint(240,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER7"));
-    Slider8 = new wxSlider(this, ID_SLIDER8, 0, 0, 100, wxPoint(272,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER8"));
-    Slider9 = new wxSlider(this, ID_SLIDER9, 0, 0, 100, wxPoint(304,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER9"));
-    Slider10 = new wxSlider(this, ID_SLIDER10, 0, 0, 100, wxPoint(336,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER10"));
+    ckVerticalEnable = new wxCheckBox(this, ID_CHECKBOX_VERTICAL_ENABLE, _("Enable"), wxPoint(16,264), wxDefaultSize, 0, wxDefaultValidator, _T("ID_CHECKBOX_VERTICAL_ENABLE"));
+    ckVerticalEnable->SetValue(false);
+    togglebtnVerticalThin = new wxToggleButton(this, ID_TOGGLEBUTTON_VERTICAL_THIN, _("Thin"), wxPoint(16,288), wxDefaultSize, 0, wxDefaultValidator, _T("ID_TOGGLEBUTTON_VERTICAL_THIN"));
+    togglebtnVerticalThick = new wxToggleButton(this, ID_TOGGLEBUTTON_VERTICAL_THICK, _("Thick"), wxPoint(16,312), wxDefaultSize, 0, wxDefaultValidator, _T("ID_TOGGLEBUTTON_VERTICAL_THICK"));
+    slideVertical1 = new wxSlider(this, ID_SLIDER_VERTICAL_1, 0, 0, 100, wxPoint(112,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_1"));
+    slideVertical2 = new wxSlider(this, ID_SLIDER_VERTICAL_2, 0, 0, 100, wxPoint(144,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_2"));
+    slideVertical3 = new wxSlider(this, ID_SLIDER_VERTICAL_3, 0, 0, 100, wxPoint(176,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_3"));
+    slideVertical4 = new wxSlider(this, ID_SLIDER_VERTICAL_4, 0, 0, 100, wxPoint(208,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_4"));
+    slideVertical5 = new wxSlider(this, ID_SLIDER_VERTICAL_5, 0, 0, 100, wxPoint(240,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_5"));
+    slideVertical6 = new wxSlider(this, ID_SLIDER_VERTICAL_6, 0, 0, 100, wxPoint(272,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_6"));
+    slideVertical7 = new wxSlider(this, ID_SLIDER_VERTICAL_7, 0, 0, 100, wxPoint(304,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_7"));
+    slideVertical8 = new wxSlider(this, ID_SLIDER_VERTICAL_8, 0, 0, 100, wxPoint(336,264), wxSize(32,72), wxSL_VERTICAL, wxDefaultValidator, _T("ID_SLIDER_VERTICAL_8"));
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
     MenuItem1 = new wxMenuItem(Menu1, idMenuQuit, _("Quit\tAlt-F4"), _("Quit the application"), wxITEM_NORMAL);
@@ -151,9 +153,37 @@ MiniLCDFrame::MiniLCDFrame(wxWindow* parent,wxWindowID id)
     StatusBar1->SetStatusStyles(1,__wxStatusBarStyles_1);
     SetStatusBar(StatusBar1);
 
+    Connect(ID_BUTTON_CLEAR_SCREEN,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnbtnClearScreenClick);
+    Connect(ID_BUTTON_NEW_LINE,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnbtnNewLineClick);
+    Connect(ID_BUTTON_WRITE_TEXT,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnbtnWriteTextClick);
+    Connect(ID_CHECKBOX_GPIO,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckGPIOClick);
+    Connect(ID_CHECKBOX_SHOW_CURSOR,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckShowCursorClick);
+    Connect(ID_CHECKBOX_BLINK_CURSOR,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckBlinkCursorClick);
+    Connect(ID_CHECKBOX_BACKLIGHT,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckBacklightClick);
+    Connect(ID_CHECKBOX_AUTO_SCROLL,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckAutoScrollClick);
+    Connect(ID_CHECKBOX_LINE_WRAP,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckLineWrapClick);
+    Connect(ID_CHECKBOX_UPDATE,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckUpdateClick);
+    Connect(ID_CHECKBOX_ENABLE_HORIZONTAL,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckEnableHorizontalClick);
+    Connect(ID_CHECKBOX_HORIZONTAL_REVERSE,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckHorizontalReverseClick);
+    Connect(ID_SLIDER_HORIZONTAL_1,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideHorizontal1CmdSliderUpdated);
+    Connect(ID_SLIDER_HORIZONTAL_2,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideHorizontal2CmdSliderUpdated);
+    Connect(ID_CHECKBOX_VERTICAL_ENABLE,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OnckVerticalEnableClick);
+    Connect(ID_TOGGLEBUTTON_VERTICAL_THIN,wxEVT_COMMAND_TOGGLEBUTTON_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OntogglebtnVerticalThinToggle);
+    Connect(ID_TOGGLEBUTTON_VERTICAL_THICK,wxEVT_COMMAND_TOGGLEBUTTON_CLICKED,(wxObjectEventFunction)&MiniLCDFrame::OntogglebtnVerticalThickToggle);
+    Connect(ID_SLIDER_VERTICAL_1,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical1CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_2,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical2CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_3,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical3CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_4,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical4CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_5,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical5CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_6,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical6CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_7,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical7CmdSliderUpdated);
+    Connect(ID_SLIDER_VERTICAL_8,wxEVT_COMMAND_SLIDER_UPDATED,(wxObjectEventFunction)&MiniLCDFrame::OnslideVertical8CmdSliderUpdated);
     Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MiniLCDFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&MiniLCDFrame::OnAbout);
     //*)
+
+    ToggleHorizontalGraph(m_LCD.getHorizontalGraphEnabled());
+    ToggleVerticalGraph(m_LCD.getVerticalGraphEnabled());
 }
 
 MiniLCDFrame::~MiniLCDFrame()
@@ -171,4 +201,163 @@ void MiniLCDFrame::OnAbout(wxCommandEvent& event)
 {
     wxString msg = wxbuildinfo(long_f);
     wxMessageBox(msg, _("Welcome to..."));
+}
+
+void MiniLCDFrame::ToggleVerticalGraph(bool fEnable)
+{
+    ckVerticalEnable->SetValue(fEnable);
+    slideVertical1->Enable(fEnable);
+    slideVertical2->Enable(fEnable);
+    slideVertical3->Enable(fEnable);
+    slideVertical4->Enable(fEnable);
+    slideVertical5->Enable(fEnable);
+    slideVertical6->Enable(fEnable);
+    slideVertical7->Enable(fEnable);
+    slideVertical8->Enable(fEnable);
+    togglebtnVerticalThick->Enable(fEnable);
+    togglebtnVerticalThin->Enable(fEnable);
+}
+
+void MiniLCDFrame::ToggleHorizontalGraph(bool fEnable)
+{
+    ckHorizontalEnable->SetValue(fEnable);
+    slideHorizontal1->Enable(fEnable);
+    slideHorizontal2->Enable(fEnable);
+    ckHorizontalReverse->Enable(fEnable);
+}
+
+void MiniLCDFrame::OnbtnClearScreenClick(wxCommandEvent& event)
+{
+    m_LCD.ClearScreen();
+}
+
+void MiniLCDFrame::OnbtnNewLineClick(wxCommandEvent& event)
+{
+    m_LCD.NewLine();
+}
+
+void MiniLCDFrame::OnbtnWriteTextClick(wxCommandEvent& event)
+{
+    m_LCD.SendMessage(editMessage->GetValue());
+}
+
+void MiniLCDFrame::OnckGPIOClick(wxCommandEvent& event)
+{
+    printf("GPIO: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+    m_LCD.setGPIO(event.IsChecked());
+}
+
+void MiniLCDFrame::OnckShowCursorClick(wxCommandEvent& event)
+{
+    printf("Show Cursor: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+    m_LCD.setShowCursor(event.IsChecked());
+}
+
+void MiniLCDFrame::OnckBlinkCursorClick(wxCommandEvent& event)
+{
+    printf("Blink Cursor: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+    m_LCD.setBlinkCursor(event.IsChecked());
+}
+
+void MiniLCDFrame::OnckBacklightClick(wxCommandEvent& event)
+{
+    printf("Backlight: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+}
+
+void MiniLCDFrame::OnckAutoScrollClick(wxCommandEvent& event)
+{
+    printf("Auto Scroll: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+    m_LCD.setAutoScroll(event.IsChecked());
+}
+
+void MiniLCDFrame::OnckLineWrapClick(wxCommandEvent& event)
+{
+    printf("Line Wrap: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+    m_LCD.setLineWrap(event.IsChecked());
+}
+
+void MiniLCDFrame::OnckUpdateClick(wxCommandEvent& event)
+{
+    printf("Update: %s\n", (event.IsChecked())?"Checked":"Unchecked");
+}
+
+void MiniLCDFrame::OnckEnableHorizontalClick(wxCommandEvent& event)
+{
+    // Enable horizontal box, disable vertical box
+    bool fEnable = m_LCD.getHorizontalGraphEnabled();
+    m_LCD.setHorizontalGraphEnabled(!fEnable);
+    ToggleHorizontalGraph(!fEnable);
+
+    // if we are enabling the horizontal box, disable the vertical box if it's enabled
+    if(!fEnable && m_LCD.getVerticalGraphEnabled()) {
+        m_LCD.setVerticalGraphEnabled(false);
+        ToggleVerticalGraph(false);
+    }
+}
+
+void MiniLCDFrame::OnckHorizontalReverseClick(wxCommandEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideHorizontal1CmdSliderUpdated(wxScrollEvent& event)
+{
+    printf("Slider1 Updated: %d\n", event.GetPosition());
+}
+
+void MiniLCDFrame::OnslideHorizontal2CmdSliderUpdated(wxScrollEvent& event)
+{
+    printf("Slider2 Updated: %d\n", event.GetPosition());
+}
+
+void MiniLCDFrame::OnckVerticalEnableClick(wxCommandEvent& event)
+{
+    bool fEnable = m_LCD.getVerticalGraphEnabled();
+    m_LCD.setVerticalGraphEnabled(!fEnable);
+    ToggleVerticalGraph(!fEnable);
+
+    // if we are enabling the vertical box, disable horizontal box if it's enabled
+    if(!fEnable && m_LCD.getHorizontalGraphEnabled()) {
+        m_LCD.setHorizontalGraphEnabled(false);
+        ToggleHorizontalGraph(false);
+    }
+}
+
+void MiniLCDFrame::OntogglebtnVerticalThinToggle(wxCommandEvent& event)
+{
+}
+
+void MiniLCDFrame::OntogglebtnVerticalThickToggle(wxCommandEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical1CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical2CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical3CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical4CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical5CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical6CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical7CmdSliderUpdated(wxScrollEvent& event)
+{
+}
+
+void MiniLCDFrame::OnslideVertical8CmdSliderUpdated(wxScrollEvent& event)
+{
 }
